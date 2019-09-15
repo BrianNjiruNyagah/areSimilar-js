@@ -1,0 +1,60 @@
+function areSimilar(a, b) {
+   
+    //ends the task if the the arrays have unequal number of components inside them
+    if(a.length != b.length){
+        return false;
+    }
+    
+    //ends the task if the arrays are empty
+    if (a === undefined || a.length == 0) {
+    return true;
+    }
+    
+    //arrays where the unequal components sha be stored and sorted to confirm if they are equal
+    var array1 =[];
+    var array2 =[];
+    
+    //checks if the arrays have the same components
+    var mapA = a
+    .map(
+    function(check){
+        if(b.includes(check)){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    
+     var mapB = b
+    .map(
+    function(check){
+        if(a.includes(check)){
+            return true;
+        }else{
+            return false;
+        }
+    });
+    //stops the process if one of the components isn't in all the arrays
+    if(mapA.includes(false) || mapB.includes(false)){
+        return false;
+    }else{
+        //collects the unequal variables for sorting 
+        for(var i = 0;i<a.length;i++){
+            if(a[i]!=b[i] ){    
+                array1.push(a[i]);
+                console.log("array1: "+array1)
+                array2.push(b[i]);
+                console.log("array2: "+array2)
+            }           
+        }
+    }
+    array1.sort();
+    array2.sort();
+    
+    //checks if the collected unequal variables that were stored in the empty arrays are equal
+    if(array1.join('')!==array2.join('')||array1.length>2){
+       return false; 
+    }else{
+        return true;
+    }  
+}
